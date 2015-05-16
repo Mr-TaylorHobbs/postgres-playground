@@ -1,9 +1,11 @@
 psql -d people
 
+-- Insert values to test against
 INSERT INTO person (first_name, last_name)
     VALUES ('John', 'Smith')
            , ('Jane', 'Doe');
 
+-- Begin tests
 BEGIN;
     SELECT plan(2);
 
@@ -20,6 +22,7 @@ BEGIN;
 
     SELECT results_eq('single_have', 'single_want', 'Have single RESULT');
 
+-- Finish tests and clear table
 SELECT * FROM finish();
 ROLLBACK;
 
