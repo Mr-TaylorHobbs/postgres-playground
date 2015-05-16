@@ -1,0 +1,3 @@
+psql
+
+DROP DATABASE people;
