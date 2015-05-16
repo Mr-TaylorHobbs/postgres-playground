@@ -22,3 +22,5 @@ BEGIN;
 
 SELECT * FROM finish();
 ROLLBACK;
+
+DELETE FROM person *;
