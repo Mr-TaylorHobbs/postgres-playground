@@ -6,7 +6,8 @@ CREATE DATABASE people;
 CREATE EXTENSION pgtap;
 
 CREATE TABLE job (
-    name text PRIMARY KEY
+    id SERIAL PRIMARY KEY,
+    name text UNIQUE
 );
 
 CREATE TABLE person (
