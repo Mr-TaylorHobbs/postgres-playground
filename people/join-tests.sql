@@ -16,12 +16,9 @@ BEGIN;
     SELECT fk_ok('person', 'job', 'job', 'name');
 
     PREPARE inner_join_have AS SELECT person.first_name, job.NAME
-                                   FROM
-                                    person person INNER JOIN job job
-                                   ON
-                                    person.job = job.NAME
-                                   WHERE
-                                    person.job = 'Manager';
+                                   FROM person, job
+                                   WHERE person.job = job.NAME
+                                   AND person.job = 'Manager';
 
     PREPARE inner_join_want AS VALUES ('John', 'Manager');
 
