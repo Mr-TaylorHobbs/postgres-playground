@@ -24,6 +24,17 @@ BEGIN;
 
     SELECT results_eq('inner_join_have', 'inner_join_want', 'Correctly got John Manager');
 
+    PREPARE subquery_have AS SELECT  person.first_name || ' ' || person.last_name AS name,
+                                     (SELECT job.name
+                                        FROM job
+                                        WHERE person.job = job.name
+                                     )
+                                    FROM person
+                                    WHERE person.first_name = 'Dave';
+
+    PREPARE subquery_want AS VALUES ('Dave Smith', 'Engineer');
+
+    SELECT results_eq('subquery_have', 'subquery_want', 'Correctly got John Smith Manager');
 
 -- Finish tests and clear table
 SELECT * FROM finish();
